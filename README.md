@@ -47,3 +47,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Example
+Example on how testing this on postman:
+<img src="./public/example/Screenshot from 2021-08-17 17-34-46.png" alt="Nest Logo" />
