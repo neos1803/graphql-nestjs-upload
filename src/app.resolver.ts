@@ -10,11 +10,11 @@ export class AppResolver {
     @Args('file', { type: () => GraphQLUpload }) file: FileUpload
   ) {
     console.log(file)
-    const file_name = await this.uploadPhoto(file);
+    const file_name = await this.uploadFileHelper(file);
     return true;
   }
 
-  private uploadPhoto({ createReadStream, encoding, filename, mimetype }: FileUpload): Promise<string> {
+  private uploadFileHelper({ createReadStream, encoding, filename, mimetype }: FileUpload): Promise<string> {
     console.log(mimetype);
     const fName = `${Date.now()}-file.${mimetype.split('/')[1]}`
     const upload: Promise<string> = new Promise((resolve, reject) => createReadStream()
