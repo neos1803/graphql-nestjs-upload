@@ -1,0 +1,14 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  sayHello: String!
+}
+
+type Mutation {
+  uploadFile(file: Upload!): Boolean!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
