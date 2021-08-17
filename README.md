@@ -8,7 +8,7 @@ This is an example of how to implement file upload on nestjs with GraphQL
 
 ## Notes
 
-This is build with apollo express 2 since apollo 3 currently isn't compatible with current newest nestjs/grapqhl (^8.x)
+This is built with apollo express 2 since apollo 3 currently isn't compatible with current newest nestjs/grapqhl (^8.x)
 
 ## Upcoming
 
