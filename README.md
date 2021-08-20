@@ -13,7 +13,7 @@ This is built with apollo express 2 since apollo 3 currently isn't compatible wi
 ## Upcoming
 
   - Multiple Files Upload
-  - [x] Filetype validation
+  - [x] File validation
   - Cloud integration to save files
 
 ## Installation
