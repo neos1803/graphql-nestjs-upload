@@ -1,24 +1,26 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { FileUpload, GraphQLUpload } from "graphql-upload";
 import { createWriteStream } from "fs";
-// import { UseInterceptors } from "@nestjs/common";
-// import { SingleFileInterceptor } from "src/interceptors/request.inteceptors";
+import { BadRequestException, InternalServerErrorException } from "@nestjs/common";
+import { fileSizeValidation } from "./utils/validation";
 
 @Resolver()
 export class AppResolver {
 
   @Mutation(returns => Boolean)
-  // @UseInterceptors(SingleFileInterceptor('file'))
   async uploadFile(
     @Args('file', { type: () => GraphQLUpload }) file: FileUpload
   ) {
     try {
-      // console.log(file)
-      // const file_name = await this.uploadFileHelper(file);
-      console.log(1)
+      if (file.filename.split(".").pop() != 'png') throw new BadRequestException("File type musst be png");
+      await fileSizeValidation(file.createReadStream(), 1000).catch((e) => {
+        throw new BadRequestException(e)
+      });
+
+      const file_name = await this.uploadFileHelper(file);
       return true;
     } catch (error) {
-      throw new Error(error.message);
+      throw new InternalServerErrorException(error.message);
     }
   }
 
